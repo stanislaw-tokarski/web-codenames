@@ -90,6 +90,7 @@ public class PlayersHolder {
         if (player != null) {
             var sessionId = sessionsHolder.sessionIdByPlayerId(playerId);
             sessionsHolder.destroy(sessionId);
+            iconsDataHolder.markAsNoLongerInUse(player.getIconName());
             eventLog.addEvent(player.getName() + " removed from the game");
             players.remove(player);
         }

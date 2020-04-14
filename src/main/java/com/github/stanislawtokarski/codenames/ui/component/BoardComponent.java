@@ -71,7 +71,7 @@ public class BoardComponent extends HorizontalLayout {
                     button.setWidth("30px");
                     button.setHeight("30px");
                 } else {
-                    button.setText((i * 5 + j) % 2 == 0 ? "CODENAMES" : "CODE4IT");
+                    button.setText(currentIndex % 2 == 0 ? "CODENAMES" : "CODE4IT");
                     button.setWidth("170px");
                     button.setHeight("115px");
                 }
