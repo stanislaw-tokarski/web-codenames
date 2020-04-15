@@ -33,12 +33,14 @@ public class GodPresenter extends CanonicalPresenter<GodView> {
     private final BoardHolder boardHolder;
     private final PlayersHolder playersHolder;
 
-    public GodPresenter(@Value("${god.ui.poll.interval}") int pollInterval,
+    public GodPresenter(@Value("${god.ui.poll.interval}") Integer pollInterval,
                         BoardHolder boardHolder, PlayersHolder playersHolder) {
         this.boardHolder = boardHolder;
         this.playersHolder = playersHolder;
-        UI.getCurrent().setPollInterval(pollInterval);
-        UI.getCurrent().addPollListener(e -> refresh());
+        if (pollInterval != null) {
+            UI.getCurrent().setPollInterval(pollInterval);
+            UI.getCurrent().addPollListener(e -> refresh());
+        }
     }
 
     @Override

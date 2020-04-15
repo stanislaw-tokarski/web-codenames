@@ -31,14 +31,16 @@ public class GamePresenter extends CanonicalPresenter<GameView> {
     private final EventLog eventLog;
     private final CountdownService countdownService;
 
-    public GamePresenter(@Value("${game.ui.poll.interval}") int pollInterval,
+    public GamePresenter(@Value("${game.ui.poll.interval}") Integer pollInterval,
                          BoardHolder boardHolder, PlayersHolder playersHolder, EventLog eventLog, CountdownService countdownService) {
         this.boardHolder = boardHolder;
         this.playersHolder = playersHolder;
         this.eventLog = eventLog;
         this.countdownService = countdownService;
-        UI.getCurrent().setPollInterval(pollInterval);
-        UI.getCurrent().addPollListener(e -> refresh());
+        if (pollInterval != null) {
+            UI.getCurrent().setPollInterval(pollInterval);
+            UI.getCurrent().addPollListener(e -> refresh());
+        }
     }
 
     @Override
